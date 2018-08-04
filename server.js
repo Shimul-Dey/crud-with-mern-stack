@@ -20,9 +20,9 @@ mongoose.connect(db)
 app.use('/api/items', items);
 
 // server static assets if in production 
-if(process.env.NODE_ENV === 'PRODUCTION'){
-    app.use(express.static('client/build'));
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
     app.get('*',( req,res) => {
         res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
